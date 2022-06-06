@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import GlobalStyle from "./styles/global";
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 import DocumentPage from "./components/Document/DocumentPage";
 
