@@ -1,5 +1,5 @@
 import React, { FC, useState } from "react";
-import { ArtboardNavigatorImg, ArtboardNavigatorText } from "./styles";
+import * as S from "./styles";
 import ArrowLeftSvg from "../../assets/arrow-left.svg";
 import ArrowRightSvg from "../../assets/arrow-right.svg";
 import BreadcrumbSvg from "../../assets/breadcrumb.svg";
@@ -21,21 +21,21 @@ const Navigator: FC<NavigatorProps> = ({ index, total, onChange }) => {
   };
 
   return (
-    <>
-      <ArtboardNavigatorImg
+    <S.NavigatorWrapper>
+      <S.ArtboardNavigatorImg
         onClick={() => onArrowClick(currentIndex - 1)}
         src={ArrowLeftSvg}
         alt="previous image"
       />
-      <ArtboardNavigatorText>{currentIndex + 1}</ArtboardNavigatorText>
-      <ArtboardNavigatorImg src={BreadcrumbSvg} alt="breadcrumb" />
-      <ArtboardNavigatorText>{total}</ArtboardNavigatorText>
-      <ArtboardNavigatorImg
+      <span>{currentIndex + 1}</span>
+      <S.ArtboardNavigatorImg src={BreadcrumbSvg} alt="breadcrumb" />
+      <span>{total}</span>
+      <S.ArtboardNavigatorImg
         onClick={() => onArrowClick(currentIndex + 1)}
         src={ArrowRightSvg}
         alt="next image"
       />
-    </>
+    </S.NavigatorWrapper>
   );
 };
 

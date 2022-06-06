@@ -1,8 +1,8 @@
 import React, { FC, PropsWithChildren } from "react";
-import { NavbarWrapper } from "./styles";
+import * as S from "./styles";
 
 const Navbar: FC<PropsWithChildren<unknown>> = ({ children }) => {
-  return <NavbarWrapper>{children}</NavbarWrapper>;
+  return <S.NavbarWrapper>{children}</S.NavbarWrapper>;
 };
 
 export default Navbar;

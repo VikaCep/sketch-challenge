@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import CloseSvg from "../../assets/close.svg";
 import SeparatorSvg from "../../assets/separator.svg";
-import { CloseImg, CloseLink, Separator } from "./styles";
+import * as S from "./styles";
 
 interface CloseButtonProps {
   homeUrl: string;
@@ -10,10 +10,10 @@ interface CloseButtonProps {
 const CloseButton: FC<CloseButtonProps> = ({ homeUrl }) => {
   return (
     <>
-      <CloseLink to={homeUrl}>
-        <CloseImg src={CloseSvg} alt="Close" />
-      </CloseLink>
-      <Separator src={SeparatorSvg} alt="Separator" />
+      <S.CloseLink to={homeUrl}>
+        <S.CloseImg src={CloseSvg} alt="Close" />
+      </S.CloseLink>
+      <S.Separator src={SeparatorSvg} alt="Separator" />
     </>
   );
 };

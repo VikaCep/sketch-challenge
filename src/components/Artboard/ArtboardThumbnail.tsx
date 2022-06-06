@@ -1,13 +1,7 @@
 import React, { FC } from "react";
 import { ListLink } from "../../styles/global";
 import { Artboard } from "../../graphql/types";
-import {
-  ArtboardWrapper,
-  ImgWrapper,
-  ThumbnailWrapper,
-  ThumbnailImg,
-  ThumbnailName,
-} from "./styles";
+import * as S from "./styles";
 
 interface ArtboardThumbnailProps {
   artboard: Artboard;
@@ -20,16 +14,16 @@ const ArtboardThumbnail: FC<ArtboardThumbnailProps> = ({
   documentId,
   index,
 }) => (
-  <ArtboardWrapper>
+  <S.ArtboardWrapper>
     <ListLink to={`/documents/${documentId}/artboards/${index}`}>
-      <ThumbnailWrapper>
-        <ImgWrapper>
-          <ThumbnailImg src={artboard.files[0].thumbnails[0].url} />
-        </ImgWrapper>
-      </ThumbnailWrapper>
-      <ThumbnailName>{artboard.name}</ThumbnailName>
+      <S.ThumbnailWrapper>
+        <S.ImgWrapper>
+          <S.ThumbnailImg src={artboard.files[0].thumbnails[0].url} />
+        </S.ImgWrapper>
+      </S.ThumbnailWrapper>
+      <S.ThumbnailName>{artboard.name}</S.ThumbnailName>
     </ListLink>
-  </ArtboardWrapper>
+  </S.ArtboardWrapper>
 );
 
 export default ArtboardThumbnail;

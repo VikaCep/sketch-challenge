@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { Artboard } from "../../graphql/types";
 import ArtboardThumbnail from "../Artboard/ArtboardThumbnail";
-import { DocumentContainer } from "./styles";
+import * as S from "./styles";
 
 interface DocumentProps {
   artboards: Artboard[];
@@ -9,7 +9,7 @@ interface DocumentProps {
 }
 
 const Document: FC<DocumentProps> = ({ artboards, documentId }) => (
-  <DocumentContainer>
+  <S.DocumentContainer>
     {artboards.map((artboard: Artboard, index: number) => (
       <ArtboardThumbnail
         key={index}
@@ -18,7 +18,7 @@ const Document: FC<DocumentProps> = ({ artboards, documentId }) => (
         index={index}
       />
     ))}
-  </DocumentContainer>
+  </S.DocumentContainer>
 );
 
 export default Document;

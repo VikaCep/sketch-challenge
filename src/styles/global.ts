@@ -9,7 +9,7 @@ export default createGlobalStyle`
     outline:0;
     box-sizing:border-box;
     font-family: 'Open Sans', sans-serif; 
-    font-size: 16px;
+    font-size: 13px;
     font-weight: 400;
     line-height: 1.5;
 }
