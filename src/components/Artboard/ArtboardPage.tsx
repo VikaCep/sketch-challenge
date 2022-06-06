@@ -7,6 +7,7 @@ import { Artboard as ArtboardType } from "../../graphql/types";
 import useGetDocumentById from "../../graphql/useGetDocumentById";
 import CloseButton from "../Navbar/CloseButton";
 import { NavbarTitle } from "../Navbar/styles";
+import Navigator from "../Navbar/Navigator";
 
 const ArtboardPage: React.FC = () => {
   const { documentId, artboardIndex = 0 } = useParams();
@@ -32,10 +33,22 @@ const ArtboardPage: React.FC = () => {
     return <ErrorPage />;
   }
 
+  const handleNavigatorChange = (index: number) => {
+    const artboard = document.artboards?.entries[index];
+    if (artboard) {
+      setArtboard(artboard);
+    }
+  };
+
   return (
     <>
       <Navbar>
         <CloseButton homeUrl={`/documents/${documentId}`} />
+        <Navigator
+          index={Number(artboardIndex)}
+          total={document?.artboards?.entries.length || "..."}
+          onChange={handleNavigatorChange}
+        />
         {artboard && <NavbarTitle>{artboard.name}</NavbarTitle>}
       </Navbar>
       <Container>
