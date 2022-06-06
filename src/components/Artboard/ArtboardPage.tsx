@@ -6,7 +6,7 @@ import ErrorPage from "../shared/ErrorPage";
 import { Artboard as ArtboardType } from "../../graphql/types";
 import useGetDocumentById from "../../graphql/useGetDocumentById";
 import CloseButton from "../Navbar/CloseButton";
-import { NavbarTitle } from "../Navbar/styles";
+import * as S from "../Navbar/styles";
 import Navigator from "../Navbar/Navigator";
 import Artboard from "./Artboard";
 
@@ -30,7 +30,7 @@ const ArtboardPage: React.FC = () => {
     }
   }, [loading, document, artboardIndex]);
 
-  if (error || (!loading && !artboard)) {
+  if (error) {
     return <ErrorPage />;
   }
 
@@ -44,13 +44,16 @@ const ArtboardPage: React.FC = () => {
   return (
     <>
       <Navbar>
-        <CloseButton homeUrl={`/documents/${documentId}`} />
-        <Navigator
-          index={Number(artboardIndex)}
-          total={document?.artboards?.entries.length || "..."}
-          onChange={handleNavigatorChange}
-        />
-        {artboard && <NavbarTitle>{artboard.name}</NavbarTitle>}
+        <S.NavbarEdge>
+          <CloseButton homeUrl={`/documents/${documentId}`} />
+          <Navigator
+            index={Number(artboardIndex)}
+            total={document?.artboards?.entries.length || "..."}
+            onChange={handleNavigatorChange}
+          />
+        </S.NavbarEdge>
+        {artboard && <S.ArtboardName>{artboard.name}</S.ArtboardName>}
+        <S.NavbarEdge />
       </Navbar>
       <Container>
         {loading && "Loading"}

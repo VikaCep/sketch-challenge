@@ -3,7 +3,7 @@ import Logo from "../Navbar/Logo";
 import Navbar from "../Navbar/Navbar";
 import Document from "./Document";
 import { Container } from "../../styles/global";
-import { NavbarTitle } from "../Navbar/styles";
+import * as S from "../Navbar/styles";
 import useGetDocumentById from "../../graphql/useGetDocumentById";
 import ErrorPage from "../shared/ErrorPage";
 import { Artboard } from "../../graphql/types";
@@ -23,8 +23,10 @@ const DocumentPage: FC = () => {
   return (
     <>
       <Navbar>
-        <Logo />
-        <NavbarTitle>{loading ? "..." : document.name}</NavbarTitle>
+        <S.NavbarEdge>
+          <Logo />
+          <S.NavbarTitle>{loading ? "..." : document.name}</S.NavbarTitle>
+        </S.NavbarEdge>
       </Navbar>
       <Container>
         {loading && <>Loading...</>}
