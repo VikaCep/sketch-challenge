@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const NavbarWrapper = styled.div`
@@ -23,6 +24,19 @@ export const LogoImg = styled.img`
   padding: 0.2em 0.1em;
   cursor: pointer;
 `;
+
+export const CloseImg = styled.img`
+  cursor: pointer;
+  width: 8px;
+`;
+
+export const CloseLink = styled(Link)`
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
 export const Separator = styled.img`
   margin-left: 10px;
   margin-right: 20px;
