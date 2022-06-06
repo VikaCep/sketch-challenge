@@ -8,6 +8,7 @@ import useGetDocumentById from "../../graphql/useGetDocumentById";
 import CloseButton from "../Navbar/CloseButton";
 import { NavbarTitle } from "../Navbar/styles";
 import Navigator from "../Navbar/Navigator";
+import Artboard from "./Artboard";
 
 const ArtboardPage: React.FC = () => {
   const { documentId, artboardIndex = 0 } = useParams();
@@ -52,6 +53,8 @@ const ArtboardPage: React.FC = () => {
         {artboard && <NavbarTitle>{artboard.name}</NavbarTitle>}
       </Navbar>
       <Container>
+        {loading && "Loading"}
+        {!loading && artboard && <Artboard artboard={artboard} />}
       </Container>
     </>
   );
