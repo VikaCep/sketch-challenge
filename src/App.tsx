@@ -4,6 +4,7 @@ import GlobalStyle from "./styles/global";
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 import DocumentPage from "./components/Document/DocumentPage";
 import ErrorPage from "./components/shared/ErrorPage";
+import ArtboardPage from "./components/Artboard/ArtboardPage";
 
 const createApolloClient = () => {
   return new ApolloClient({
@@ -21,6 +22,10 @@ const App: React.FC = () => (
       <Routes>
         <Route path="/" element={<DocumentPage />} />
         <Route path="/documents/:documentId" element={<DocumentPage />} />
+        <Route
+          path="/documents/:documentId/artboards/:artboardIndex"
+          element={<ArtboardPage />}
+        />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </ApolloProvider>
