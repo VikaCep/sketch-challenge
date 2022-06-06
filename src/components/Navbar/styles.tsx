@@ -10,6 +10,14 @@ export const NavbarWrapper = styled.div`
   box-shadow: 0 1px 8px #ddd;
   height: 60px;
 `;
+
+export const NavbarTitle = styled.div`
+  color: black;
+  font-size: 13px;
+  line-height: 1.5;
+  margin-left: 15px;
+`;
+
 export const LogoImg = styled.img`
   width: 1.5em;
   padding: 0.2em 0.1em;
