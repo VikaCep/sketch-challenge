@@ -21,6 +21,7 @@ export default createGlobalStyle`
 export const Container = styled.div`
   display: flex;
   padding: 1em;
+  width: 100%;
 `;
 
 export const ListLink = styled(Link)`

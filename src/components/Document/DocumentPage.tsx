@@ -8,6 +8,7 @@ import useGetDocumentById from "../../graphql/useGetDocumentById";
 import ErrorPage from "../shared/ErrorPage";
 import { Artboard } from "../../graphql/types";
 import { useParams } from "react-router-dom";
+import LoadingPage from "../shared/LoadingPage";
 
 const DocumentPage: FC = () => {
   const params = useParams();
@@ -29,7 +30,7 @@ const DocumentPage: FC = () => {
         </S.NavbarEdge>
       </Navbar>
       <Container>
-        {loading && <>Loading...</>}
+        {loading && <LoadingPage />}
         {!loading && (
           <Document
             documentId={documentId}

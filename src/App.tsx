@@ -5,6 +5,7 @@ import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 import DocumentPage from "./components/Document/DocumentPage";
 import ErrorPage from "./components/shared/ErrorPage";
 import ArtboardPage from "./components/Artboard/ArtboardPage";
+import NotFoundPage from "./components/shared/NotFoundPage";
 
 const createApolloClient = () => {
   return new ApolloClient({
@@ -26,7 +27,8 @@ const App: React.FC = () => (
           path="/documents/:documentId/artboards/:artboardIndex"
           element={<ArtboardPage />}
         />
-        <Route path="*" element={<ErrorPage />} />
+        <Route path="/error" element={<ErrorPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </ApolloProvider>
   </Router>

@@ -9,6 +9,7 @@ import CloseButton from "../Navbar/CloseButton";
 import * as S from "../Navbar/styles";
 import Navigator from "../Navbar/Navigator";
 import Artboard from "./Artboard";
+import LoadingPage from "../shared/LoadingPage";
 
 const ArtboardPage: React.FC = () => {
   const { documentId, artboardIndex = 0 } = useParams();
@@ -28,6 +29,8 @@ const ArtboardPage: React.FC = () => {
       const entries = document.artboards?.entries;
       const artboard = entries[artboardIndex];
 
+      if (!entries || !artboard) {
+        navigateTo("/error");
       }
 
       setTotal(entries.length);
@@ -60,7 +63,7 @@ const ArtboardPage: React.FC = () => {
         <S.NavbarEdge />
       </Navbar>
       <Container>
-        {loading && "Loading"}
+        {loading && <LoadingPage />}
         {!loading && artboard && <Artboard artboard={artboard} />}
       </Container>
     </>
