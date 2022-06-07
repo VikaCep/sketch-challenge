@@ -6,7 +6,7 @@ import BreadcrumbSvg from "../../assets/breadcrumb.svg";
 
 interface NavigatorProps {
   index: number;
-  total: number;
+  total?: number;
   onChange: (index: number) => void;
 }
 
@@ -14,7 +14,7 @@ const Navigator: FC<NavigatorProps> = ({ index, total, onChange }) => {
   const [currentIndex, setCurrentIndex] = useState(index);
 
   const onArrowClick = (newIndex: number) => {
-    if (newIndex >= 0 && newIndex <= total - 1) {
+    if (newIndex >= 0 && total && newIndex <= total - 1) {
       setCurrentIndex(newIndex);
       onChange(newIndex);
     }
@@ -29,7 +29,7 @@ const Navigator: FC<NavigatorProps> = ({ index, total, onChange }) => {
       />
       <span>{currentIndex + 1}</span>
       <S.ArtboardNavigatorImg src={BreadcrumbSvg} alt="breadcrumb" />
-      <span>{total}</span>
+      <span>{total || "..."}</span>
       <S.ArtboardNavigatorImg
         onClick={() => onArrowClick(currentIndex + 1)}
         src={ArrowRightSvg}

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../Navbar/Navbar";
 import { Container } from "../../styles/global";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import ErrorPage from "../shared/ErrorPage";
 import { Artboard as ArtboardType } from "../../graphql/types";
 import useGetDocumentById from "../../graphql/useGetDocumentById";
@@ -12,6 +12,7 @@ import Artboard from "./Artboard";
 
 const ArtboardPage: React.FC = () => {
   const { documentId, artboardIndex = 0 } = useParams();
+  const navigateTo = useNavigate();
 
   const {
     data: document,
@@ -20,25 +21,26 @@ const ArtboardPage: React.FC = () => {
   } = useGetDocumentById(documentId as string);
 
   const [artboard, setArtboard] = useState<ArtboardType | undefined>(undefined);
+  const [total, setTotal] = useState<number | undefined>(undefined);
 
   useEffect(() => {
     if (!loading) {
-      const artboard = document.artboards?.entries[artboardIndex];
-      if (artboard) {
-        setArtboard(artboard);
+      const entries = document.artboards?.entries;
+      const artboard = entries[artboardIndex];
+
       }
+
+      setTotal(entries.length);
+      setArtboard(artboard);
     }
-  }, [loading, document, artboardIndex]);
+  }, [loading, document, artboardIndex, navigateTo]);
 
   if (error) {
     return <ErrorPage />;
   }
 
   const handleNavigatorChange = (index: number) => {
-    const artboard = document.artboards?.entries[index];
-    if (artboard) {
-      setArtboard(artboard);
-    }
+    navigateTo(`/documents/${documentId}/artboards/${index}`);
   };
 
   return (
@@ -46,13 +48,15 @@ const ArtboardPage: React.FC = () => {
       <Navbar>
         <S.NavbarEdge>
           <CloseButton homeUrl={`/documents/${documentId}`} />
-          <Navigator
-            index={Number(artboardIndex)}
-            total={document?.artboards?.entries.length || "..."}
-            onChange={handleNavigatorChange}
-          />
+          {!loading && (
+            <Navigator
+              index={Number(artboardIndex)}
+              total={total}
+              onChange={handleNavigatorChange}
+            />
+          )}
         </S.NavbarEdge>
-        {artboard && <S.ArtboardName>{artboard.name}</S.ArtboardName>}
+        <S.ArtboardName>{artboard?.name}</S.ArtboardName>
         <S.NavbarEdge />
       </Navbar>
       <Container>
