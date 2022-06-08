@@ -26,7 +26,7 @@ const ArtboardPage: React.FC = () => {
 
   useEffect(() => {
     if (!loading) {
-      const entries = document.artboards?.entries;
+      const entries = document?.artboards?.entries || [];
       const artboard = entries[artboardIndex];
 
       if (!entries || !artboard) {
