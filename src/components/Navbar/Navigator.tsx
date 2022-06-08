@@ -27,9 +27,9 @@ const Navigator: FC<NavigatorProps> = ({ index, total, onChange }) => {
         src={ArrowLeftSvg}
         alt="previous image"
       />
-      <span>{currentIndex + 1}</span>
+      <span data-testid="current-index">{currentIndex + 1}</span>
       <S.ArtboardNavigatorImg src={BreadcrumbSvg} alt="breadcrumb" />
-      <span>{total || "..."}</span>
+      <span data-testid="total">{total || "..."}</span>
       <S.ArtboardNavigatorImg
         onClick={() => onArrowClick(currentIndex + 1)}
         src={ArrowRightSvg}
