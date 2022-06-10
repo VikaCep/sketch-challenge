@@ -14,7 +14,7 @@ const ArtboardThumbnail: FC<ArtboardThumbnailProps> = ({
   documentId,
   index,
 }) => (
-  <S.ArtboardWrapper>
+  <S.ArtboardWrapper data-testid="artboard-thumbnail">
     <ListLink to={`/documents/${documentId}/artboards/${index}`}>
       <S.ThumbnailWrapper>
         <S.ImgWrapper>

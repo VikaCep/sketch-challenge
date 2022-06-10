@@ -59,7 +59,7 @@ const ArtboardPage: React.FC = () => {
             />
           )}
         </S.NavbarEdge>
-        <S.ArtboardName>{artboard?.name}</S.ArtboardName>
+        <S.ArtboardName data-testid="artboard-name">{artboard?.name}</S.ArtboardName>
         <S.NavbarEdge />
       </Navbar>
       <Container>

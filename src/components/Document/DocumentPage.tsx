@@ -26,7 +26,7 @@ const DocumentPage: FC = () => {
       <Navbar>
         <S.NavbarEdge>
           <Logo />
-          <S.NavbarTitle>{loading ? "..." : document.name}</S.NavbarTitle>
+          <S.NavbarTitle data-testid="document-name">{loading ? "..." : document.name}</S.NavbarTitle>
         </S.NavbarEdge>
       </Navbar>
       <Container>

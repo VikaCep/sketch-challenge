@@ -15,7 +15,7 @@ const ErrorPage: FC = () => {
         </S.NavbarEdge>
       </Navbar>
       <Container>
-        <p>
+        <p data-testid="error-text">
           There has been an error. Please try again later or go back to{" "}
           <Link to={`/`}>the main page</Link>.
         </p>
