@@ -1,7 +1,7 @@
-export const doc1 = "e981971c-ff57-46dc-a932-a60dc1804992";
-export const doc2 = "40432a93-5434-4059-87b9-545fd1ad6ee0";
-
 describe("Document page", () => {
+  const doc1 = "e981971c-ff57-46dc-a932-a60dc1804992";
+  const doc2 = "40432a93-5434-4059-87b9-545fd1ad6ee0";
+
   it("displays the default document", () => {
     cy.visit(`http://localhost:3000/documents/${doc1}`);
     cy.get('[data-testid="artboard-thumbnail"]').should("have.length", 16);

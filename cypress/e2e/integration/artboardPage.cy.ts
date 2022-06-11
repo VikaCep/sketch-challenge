@@ -1,6 +1,6 @@
-import { doc1 } from "./documentPage.cy";
-
 describe("Artboard page", () => {
+  const doc1 = "e981971c-ff57-46dc-a932-a60dc1804992";
+
   beforeEach(() => {
     cy.visit(`http://localhost:3000/documents/${doc1}/artboards/2`);
   });
